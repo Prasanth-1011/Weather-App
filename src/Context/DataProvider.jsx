@@ -5,9 +5,12 @@ export const DataContext = createContext();
 const DataProvider = ({ children }) => {
     const [city, setCity] = useState("Chennai");
     const [data, setData] = useState(null);
+    const [forecast, setForecast] = useState(null);
 
     return (
-        <DataContext.Provider value={{ city, setCity, data, setData }}>
+        <DataContext.Provider
+            value={{ city, setCity, data, setData, forecast, setForecast }}
+        >
             {children}
         </DataContext.Provider>
     );

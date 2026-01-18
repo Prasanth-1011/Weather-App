@@ -4,7 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { DataContext } from "../Context/DataProvider";
 
 const SearchBox = () => {
-    const { city, setCity, setData } = useContext(DataContext);
+    const { city, setCity, setData, setForecast } = useContext(DataContext);
     const [name, setName] = useState("");
     const [message, setMessage] = useState({ text: "", color: "" });
     const text = "Search Cities Worldwide";
@@ -23,8 +23,13 @@ const SearchBox = () => {
                 `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
             );
             const info = response.data;
-            console.log(info);
             setData(info);
+
+            const forecastResponse = await axios.get(
+                `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`,
+            );
+            setForecast(forecastResponse.data);
+
         } catch (error) {
             setMessage({ text: "City Not Found", color: "text-red-300" });
             setTimeout(() => {

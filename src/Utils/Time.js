@@ -50,3 +50,12 @@ export const formatDate = (timestamp) => {
 
     return `${month} ${day} ${year}`;
 };
+
+export const forecastDate = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-US", {
+        weekday: "short",
+        day: "numeric",
+        month: "short",
+    });
+};

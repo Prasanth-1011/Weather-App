@@ -18,7 +18,7 @@ const Weather = () => {
     }, []);
 
     return (
-        <section className="mx-auto mt-8 mb-12 flex w-full max-w-4xl flex-col gap-8 p-4 font-semibold text-slate-200">
+        <section className="flex w-full flex-col gap-8 font-semibold text-slate-200">
             <div className="relative overflow-hidden rounded-3xl border border-slate-700/20 bg-white/1 p-6 shadow-lg backdrop-blur-xl md:p-10">
                 <div className="absolute top-0 left-0 h-1 w-full bg-linear-to-r from-sky-500/50 via-sky-500/20 to-sky-500/50" />
 

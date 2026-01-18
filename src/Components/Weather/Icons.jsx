@@ -2,10 +2,11 @@ import { Sun, Cloud, Snowflake, CloudHail, CloudFog, Haze } from "lucide-react";
 import { useContext } from "react";
 import { DataContext } from "../../Context/DataProvider";
 
-const Icons = ({ size = 80 }) => {
+const Icons = ({ size = 80, type }) => {
     const { data } = useContext(DataContext);
+    const weatherMain = type || (data && data.weather[0].main);
 
-    switch (data && data.weather[0].main) {
+    switch (weatherMain) {
         case "Clear":
             return <Sun size={size} strokeWidth={1.5} />;
         case "Smoke":
@@ -20,8 +21,12 @@ const Icons = ({ size = 80 }) => {
             return <Snowflake size={size} strokeWidth={1.5} />;
         case "Rain":
             return <CloudHail size={size} strokeWidth={1.5} />;
+        case "Drizzle":
+            return <CloudHail size={size} strokeWidth={1.5} />;
+        case "Thunderstorm":
+            return <CloudHail size={size} strokeWidth={1.5} />;
         default:
-            return null;
+            return <Cloud size={size} strokeWidth={1.5} />;
     }
 };
 
